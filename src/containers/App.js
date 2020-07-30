@@ -27,17 +27,17 @@ class App extends Component {
 	render() {
 		const { joke, isPending, changeJoke } = this.props;
 
-		return isPending ?
-			<h1>LOADING</h1> :
-			(
+		return (
 				<div className='container'>
 					<h1>Chuck Norris Jokes</h1>
 					<button onClick={changeJoke}>New Joke</button>
 					<ErrorBoundary>
-						<p>{joke}</p>
+						{isPending ?
+						<p className='loading animate__animated animate__zoomIn'>LOADING</p> :
+						<p className='animate__animated animate__rotateIn'>{joke}</p>}
 					</ErrorBoundary>
 				</div>
-			)
+		)
 	}
 }
 
